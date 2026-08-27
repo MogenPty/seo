@@ -10,13 +10,15 @@ import { Button } from "../ui/button";
 const DATA_IMG =
   "https://media.base44.com/images/public/6a8edbb6af7b7087867d9d96/f97cc1484_generated_2435c9d1.png";
 
-const lenses = [
+type LensKey = "exec" | "tech" | "client";
+
+const lenses: { key: LensKey; label: string; tag: string }[] = [
   { key: "exec", label: "Executive View", tag: "ROI / GROWTH" },
   { key: "tech", label: "Technical View", tag: "CODE / VITALS" },
   { key: "client", label: "Client View", tag: "PLAIN LANGUAGE" },
 ];
 
-const content = {
+const content: Record<LensKey, { headline: string; body: string; metrics: { k: string; v: string; d: string }[] }> = {
   exec: {
     headline: "Revenue-grade outcomes, board-ready.",
     body: "Organic sessions converted to pipeline value, ranked against acquisition cost. No vanity metrics — only the numbers that move the business.",
@@ -50,7 +52,7 @@ const content = {
 };
 
 export default function PersonaReporting() {
-  const [active, setActive] = useState("exec");
+  const [active, setActive] = useState<LensKey>("exec");
 
   const data = content[active];
 
@@ -112,7 +114,7 @@ export default function PersonaReporting() {
               </span>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {data.metrics.map((m) => (
+              {data.metrics.map((m: { k: string; v: string; d: string }) => (
                 <div
                   key={m.k}
                   className="border border-white/10 bg-obsidian/60 p-4"

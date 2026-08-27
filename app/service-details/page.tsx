@@ -69,7 +69,7 @@ const tiers = [
   },
 ];
 
-const Cell = ({ v }) => {
+const Cell = ({ v }: { v: boolean | string }) => {
   if (v === true) return <Check className="mx-auto h-4 w-4 text-volt" />;
   if (v === false)
     return <Minus className="mx-auto h-4 w-4 text-slate-text/30" />;
