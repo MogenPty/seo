@@ -90,17 +90,21 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api || !setApi) return
-    setApi(api)
+    // Defer to avoid synchronous setState in effect body (cascading render)
+    queueMicrotask(() => setApi(api))
   }, [api, setApi])
 
   React.useEffect(() => {
     if (!api) return
-    onSelect(api)
+    // Defer initial sync to avoid synchronous setState in effect body
+    // onSelect calls setCanScrollPrev/Next which would trigger cascading renders
+    queueMicrotask(() => onSelect(api))
     api.on("reInit", onSelect)
     api.on("select", onSelect)
 
     return () => {
-      api?.off("select", onSelect)
+      api.off("select", onSelect)
+      api.off("reInit", onSelect)
     }
   }, [api, onSelect])
 

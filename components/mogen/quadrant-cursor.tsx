@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function QuadrantCursor() {
   const [enabled, setEnabled] = useState(false);
-  const pos = useRef({ x: -100, y: -100 });
-  const [tick, setTick] = useState(0);
+  const [pos, setPos] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
     if (
@@ -13,28 +12,32 @@ export default function QuadrantCursor() {
       !window.matchMedia("(pointer: fine)").matches
     )
       return;
-    setEnabled(true);
+    // Defer to avoid synchronous setState in effect body (cascading render)
+    queueMicrotask(() => setEnabled(true));
     let raf = 0;
+    let pending: { x: number; y: number } | null = null;
     const move = (e: { clientX: number; clientY: number }) => {
-      pos.current = { x: e.clientX, y: e.clientY };
+      pending = { x: e.clientX, y: e.clientY };
       if (!raf) {
         raf = requestAnimationFrame(() => {
           raf = 0;
-          setTick((t) => t + 1);
+          if (pending) setPos(pending);
         });
       }
     };
     window.addEventListener("mousemove", move, { passive: true });
-    return () => window.removeEventListener("mousemove", move);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   if (!enabled) return null;
-  const { x, y } = pos.current;
+  const { x, y } = pos;
   return (
     <div
       className="pointer-events-none fixed inset-0 z-90 hidden md:block"
       aria-hidden
-      data-tick={tick}
     >
       <div
         className="absolute left-0 right-0 h-px bg-volt/20"
