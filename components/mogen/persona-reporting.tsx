@@ -18,7 +18,14 @@ const lenses: { key: LensKey; label: string; tag: string }[] = [
   { key: "client", label: "Client View", tag: "PLAIN LANGUAGE" },
 ];
 
-const content: Record<LensKey, { headline: string; body: string; metrics: { k: string; v: string; d: string }[] }> = {
+const content: Record<
+  LensKey,
+  {
+    headline: string;
+    body: string;
+    metrics: { k: string; v: string; d: string }[];
+  }
+> = {
   exec: {
     headline: "Revenue-grade outcomes, board-ready.",
     body: "Organic sessions converted to pipeline value, ranked against acquisition cost. No vanity metrics — only the numbers that move the business.",
@@ -86,7 +93,7 @@ export default function PersonaReporting() {
               className={`group flex items-center gap-3 border px-5 py-3 transition-colors ${
                 active === l.key
                   ? "border-volt bg-volt text-obsidian"
-                  : "border-white/15 text-slate-text hover:border-white/40 hover:text-white"
+                  : "border-white/15 text-[grey] hover:border-white/40 hover:text-white"
               }`}
             >
               <span className="font-mono text-[9px] tracking-[0.2em] opacity-70">

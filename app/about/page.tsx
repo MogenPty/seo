@@ -6,22 +6,22 @@ import { IMG } from "@/lib/mogen-images";
 
 const timeline = [
   {
-    year: "2016",
+    year: "2019",
     title: "The First Band",
     body: "Mogen's founders — a search engineer and a conversion analyst — codify the first priority band: Critical issues, fixed immediately, while consulting for Pretoria retailers.",
   },
   {
-    year: "2019",
+    year: "2021",
     title: "Four-Band Synthesis",
     body: "The remaining three bands — Reactive, Strategic and Deferred — are formalised, sorting every finding by importance and urgency into the model that became the framework's signature.",
   },
   {
-    year: "2021",
+    year: "2024",
     title: "The 37 Steps",
     body: "Hundreds of audits distilled into a repeatable 37-step sequence, each step mapped to executive, technical and client value propositions.",
   },
   {
-    year: "2024",
+    year: "2026",
     title: "Triple-Lens Reporting",
     body: "The reporting layer is rebuilt to translate one dataset into three audiences, killing the 'black box' complaint across the Gauteng market.",
   },

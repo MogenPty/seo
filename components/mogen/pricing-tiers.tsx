@@ -10,9 +10,9 @@ const tiers = [
     focus: "Critical + Reactive Bands · Core 15/37 Steps",
     target: "Local Pretoria SMEs needing a solid technical base.",
     features: [
+      "Core 15 of 37 steps",
       "Q1 Critical Band — immediate fixes",
       "Q2 Reactive Band — quick wins",
-      "Core 15 of 37 steps",
       "Local SEO grid mapping (Pretoria)",
       "Core Web Vitals remediation",
       "Single-persona reporting",
