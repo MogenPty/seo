@@ -113,14 +113,14 @@ export default function Hero() {
                 opacity="0.5"
               />
               <text
-                x="372"
+                x="0"
                 y="196"
                 fill="#A1A1AA"
                 fontSize="8"
                 fontFamily="JetBrains Mono"
                 letterSpacing="1"
               >
-                URGENCY →
+                ← IMPORTANCE
               </text>
               <text
                 x="206"
@@ -130,7 +130,7 @@ export default function Hero() {
                 fontFamily="JetBrains Mono"
                 letterSpacing="1"
               >
-                IMPORTANCE ↑
+                URGENCY ↑
               </text>
               <circle
                 cx="200"
@@ -150,7 +150,7 @@ export default function Hero() {
               />
               {/* quadrant labels */}
               <text
-                x="100"
+                x="72"
                 y="96"
                 fill="#A1A1AA"
                 fontSize="9"
@@ -160,7 +160,7 @@ export default function Hero() {
                 Q1
               </text>
               <text
-                x="300"
+                x="330"
                 y="96"
                 textAnchor="end"
                 fill="#A1A1AA"
@@ -171,7 +171,7 @@ export default function Hero() {
                 Q2
               </text>
               <text
-                x="100"
+                x="72"
                 y="312"
                 fill="#A1A1AA"
                 fontSize="9"
@@ -181,7 +181,7 @@ export default function Hero() {
                 Q3
               </text>
               <text
-                x="300"
+                x="330"
                 y="312"
                 textAnchor="end"
                 fill="#A1A1AA"

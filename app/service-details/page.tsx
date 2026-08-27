@@ -15,11 +15,11 @@ const tiers = [
       { label: "Q2 — Reactive Band (Urgent, Lower Impact)", inc: true },
       { label: "Q3 — Strategic Band (Important, Not Urgent)", inc: false },
       { label: "Q4 — Deferred Band (Last Tasks)", inc: false },
-      { label: "Local SEO grid mapping (Pretoria)", inc: true },
+      { label: "Local SEO grid mapping (regional)", inc: true },
       { label: "Core Web Vitals remediation", inc: true },
       { label: "Schema & structured data", inc: false },
       { label: "Competitor backlink infiltration", inc: false },
-      { label: "Reporting lens", inc: "Single" },
+      { label: "Reporting lens", inc: "Single (Client)" },
       { label: "Strategy review cadence", inc: "Monthly" },
       { label: "Implementation by Mogen", inc: "Specifications only" },
       { label: "Priority response channel", inc: false },
@@ -35,12 +35,12 @@ const tiers = [
       { label: "Q1 — Critical Band (Important & Urgent)", inc: true },
       { label: "Q2 — Reactive Band (Urgent, Lower Impact)", inc: true },
       { label: "Q3 — Strategic Band (Important, Not Urgent)", inc: true },
-      { label: "Q4 — Deferred Band (Last Tasks)", inc: true },
-      { label: "Local SEO grid mapping (Pretoria)", inc: true },
+      { label: "Q4 — Deferred Band (Last Tasks)", inc: false },
+      { label: "Local SEO grid mapping (regional)", inc: true },
       { label: "Core Web Vitals remediation", inc: true },
       { label: "Schema & structured data", inc: true },
       { label: "Competitor backlink infiltration", inc: true },
-      { label: "Reporting lens", inc: "Triple (Exec / Tech / Client)" },
+      { label: "Reporting lens", inc: "Double (Exec / Client)" },
       { label: "Strategy review cadence", inc: "Bi-weekly" },
       { label: "Implementation by Mogen", inc: true },
       { label: "Priority response channel", inc: false },
@@ -57,11 +57,14 @@ const tiers = [
       { label: "Q2 — Reactive Band (Urgent, Lower Impact)", inc: true },
       { label: "Q3 — Strategic Band (Important, Not Urgent)", inc: true },
       { label: "Q4 — Deferred Band (Last Tasks)", inc: true },
-      { label: "Local SEO grid mapping (Pretoria + national)", inc: true },
+      { label: "Local SEO grid mapping (regional + national)", inc: true },
       { label: "Core Web Vitals remediation", inc: true },
       { label: "Schema & structured data", inc: true },
       { label: "Competitor backlink infiltration", inc: true },
-      { label: "Reporting lens", inc: "Triple + custom dashboards" },
+      {
+        label: "Reporting lens",
+        inc: "Triple (Exec / Client / Custom)",
+      },
       { label: "Strategy review cadence", inc: "Bi-weekly exec briefs" },
       { label: "Implementation by Mogen", inc: "Dedicated squad" },
       { label: "Priority response channel", inc: true },
@@ -143,7 +146,7 @@ export default function ServiceDetails() {
                 </tr>
               </thead>
               <tbody>
-                {tiers[0].rows.map((r) => (
+                {tiers[0].rows.map((r, i) => (
                   <tr
                     key={r.label}
                     className="border-b border-white/5 hover:bg-white/2"
@@ -153,7 +156,7 @@ export default function ServiceDetails() {
                     </td>
                     {tiers.map((t) => (
                       <td key={t.name} className="p-4 text-center">
-                        <Cell v={r.inc} />
+                        <Cell v={t.rows[i].inc} />
                       </td>
                     ))}
                   </tr>
